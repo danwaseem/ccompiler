@@ -153,8 +153,8 @@ INTE {digit}+
 
 %%
 
-\/\*.*(\n)*\*\/ {} ;
-\/\*[^\*\/]* {del();}
+\/\*.*(\n)*.*\*\/ {} ;
+\/\*[^.\n\*\/]* {del();}
 \/\/(.*) {};
 #(.*) {};
 {KEY} {printf("Keyword: %s\n",yytext);insertsymbol("KEYWORD\t",yytext);}
