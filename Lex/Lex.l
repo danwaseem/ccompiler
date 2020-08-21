@@ -153,19 +153,21 @@ INTE {digit}+
 
 %%
 
-\/\*.*(\n)*.*\*\/ {} ;
-\/\*[^.\n\*\/]* {del();}
+\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/ {} ;
+\/\*[^(\*\/)] {del();}
 \/\/(.*) {};
 #(.*) {};
 {KEY} {printf("Keyword: %s\n",yytext);insertsymbol("KEYWORD\t",yytext);}
 \".*\" {printf("String Constant: %s\n",yytext);insertconstant("STRING CONSTANT",yytext);}
 \'.*\' {printf("Character Constant: %s\n",yytext);insertconstant("CHARACTER CONSTANT",yytext);}
 {INTE} {printf("Constant: %s\n",yytext);insertconstant("NUMBER CONSTANT",yytext);}
-[(){}|,;] {printf("Seperator: %s\n",yytext);}
+"["|"]"|[(){}|] {printf("Seperator: %s\n",yytext);}
+[,;] {printf("Delimiters: %s\n",yytext);}
+{digit}+"."{digit}*  {printf("Float: %s\n",yytext);insertconstant("NUMBER CONSTANT",yytext);}
 {IDEN} {printf("Identifier: %s\n",yytext);insertsymbol("IDENTIFIER",yytext);}
 {OPER} {printf("Operator: %s\n",yytext);}
-(\")[^\n\"]* {del1();}
-(\')[^\n\']* {del1();}
+(\")[^\"]* {del1();}
+(\')[^\']* {del1();}
 [ \t\n]+ {};
 . {printf("%s\n",yytext);del2();}
 
@@ -198,7 +200,7 @@ int main()
     symb[i].length=0;
     cons[i].length=0;
   }
-  yyin=fopen("test1.c","r");
+  yyin=fopen("test7.c","r");
   yylex();
   printconstant();
   printsymbol();
