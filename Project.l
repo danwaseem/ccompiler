@@ -1,142 +1,153 @@
 %{#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-#define SYMBOL 1000 // Size of the Hash Table
-#define CONSTANT 1000 // Size of the Hash Table
+#define CAPACITY 1000
 
+struct symbol
+{
+	char key[100];
+	char data[100];
+	int length;
+}symb[CAPACITY];
 
-unsigned long hash_function(char* str) {
-    unsigned long i = 0;
-    for (int j=0; str[j]; j++)
-        i += str[j];
-    return i % SYMBOL;
+struct constant
+{
+	char key[100];
+	char data[100];
+	int length;
+}cons[CAPACITY];
+
+int hash(char *str)
+{
+	int value = 0;
+	for(int i = 0 ; i < strlen(str) ; i++)
+	{
+		value = 10*value + (str[i] - 'A');
+		value = value % CAPACITY;
+		while(value < 0)
+			value = value + CAPACITY;
+	}
+	return value;
+}
+int searchST(char *str)
+{
+	int value = hash(str);
+	if(symb[value].length == 0)
+		return 0;
+	else if(strcmp(symb[value].key,str)==0)
+		return 1;
+	else
+	{
+		for(int i = value + 1 ; i!=value ; i = (i+1)%CAPACITY)
+    	if(strcmp(symb[i].key,str)==0)
+    		return 1;
+    return 0;
+  }
+}
+int searchCT(char *str)
+{
+	int value = hash(str);
+  if(cons[value].length == 0)
+		return 0;
+	else if(strcmp(cons[value].key,str)==0)
+		return 1;
+	else
+	{
+		for(int i = value + 1 ; i!=value ; i = (i+1)%CAPACITY)
+			if(strcmp(cons[i].key,str)==0)
+				return 1;
+		return 0;
+	}
 }
 
-typedef struct Ht_item Ht_item;
+void insertsymbol(char *str2, char *str1)
+{
+	if(searchST(str1))
+    return;
+	else
+	{
+		int value = hash(str1);
+		if(symb[value].length == 0)
+		{
+			strcpy(symb[value].key,str1);
+			strcpy(symb[value].data,str2);
+			symb[value].length = strlen(str1);
+			return;
+		}
 
-// Define the Hash Table Item here
-struct Ht_item {
-    char* key;
-    char* value;
-};
+		int pos = 0;
 
-typedef struct HashTable HashTable;
+		for (int i = value + 1 ; i!=value ; i = (i+1)%CAPACITY)
+			if(symb[i].length == 0)
+			{
+				pos = i;
+				break;
+			}
 
-// Define the Hash Table here
-struct HashTable {
-    // Contains an array of pointers
-    // to items
-    Ht_item** items;
-    int size;
-    int count;
-};
-
-Ht_item* create_item(char* key, char* value) {
-    // Creates a pointer to a new hash table item
-    Ht_item* item = (Ht_item*) malloc (sizeof(Ht_item));
-    item->key = (char*) malloc (strlen(key) + 1);
-    item->value = (char*) malloc (strlen(value) + 1);
-
-    strcpy(item->key, key);
-    strcpy(item->value, value);
-
-    return item;
+		strcpy(symb[pos].key,str1);
+		strcpy(symb[pos].data,str2);
+		symb[pos].length = strlen(str1);
+	}
 }
 
-HashTable* create_table(int size) {
-    // Creates a new HashTable
-    HashTable* table = (HashTable*) malloc (sizeof(HashTable));
-    table->size = size;
-    table->count = 0;
-    table->items = (Ht_item**) calloc (table->size, sizeof(Ht_item*));
-    for (int i=0; i<table->size; i++)
-        table->items[i] = NULL;
+void insertconstant(char *str2, char *str1)
+{
+	if(searchCT(str1))
+		return;
+	else
+	{
+		int value = hash(str1);
+		if(cons[value].length == 0)
+		{
+			strcpy(cons[value].key,str1);
+			strcpy(cons[value].data,str2);
+			cons[value].length = strlen(str1);
+			return;
+		}
 
-    return table;
-}
-char* ht_search(HashTable* table, char* key) {
-    // Searches the key in the hashtable
-    // and returns NULL if it doesn't exist
-    int index = hash_function(key);
-    Ht_item* item = table->items[index];
+		int pos = 0;
 
-    // Ensure that we move to a non NULL item
-    if (item != NULL) {
-        if (strcmp(item->key, key) == 0)
-            return item->value;
-    }
-    return NULL;
-}
+		for (int i = value + 1 ; i!=value ; i = (i+1)%CAPACITY)
+			if(cons[i].length == 0)
+			{
+				pos = i;
+				break;
+			}
 
-
-
-void handle_collision(HashTable* table, unsigned long index, Ht_item* item) {
-}
-
-void ht_insert(HashTable* table, char* key, char* value) {
-
-    if (ht_search(HashTable* table, char* key))
-    {// Create the item
-      Ht_item* item = create_item(key, value);
-
-    // Compute the index
-      unsigned long index = hash_function(key);
-
-      Ht_item* current_item = table->items[index];
-
-      if (current_item == NULL) {
-        // Key does not exist.
-        if (table->count == table->size) {
-            // Hash Table Full
-            printf("Insert Error: Hash Table is full\n");
-            // Remove the create item
-            free_item(item);
-            return;
-        }
-
-        // Insert directly
-        table->items[index] = item;
-        table->count++;
-      }
-
-      else {
-            // Scenario 1: We only need to update value
-            if (strcmp(current_item->key, key) == 0) {
-                strcpy(table->items[index]->value, value);
-                return;
-            }
-
-            else {
-            // Scenario 2: Collision
-            // We will handle case this a bit later
-            handle_collision(table, index, item);
-            return;
-        }
-    }
-}
+		strcpy(cons[pos].key,str1);
+		strcpy(cons[pos].data,str2);
+		cons[pos].length = strlen(str1);
+	}
 }
 
+void printsymbol()
+{
+  printf("\n\n*****SYMBOL TABLE*****\n\n");
+	for(int i = 0 ; i < CAPACITY ; i++)
+	{
+		if(symb[i].length == 0)
+			continue;
 
-void print_table(HashTable* table) {
-    printf("\nSymbol Table\n-------------------\n");
-    for (int i=0; i<table->size; i++) {
-        if (table->items[i]) {
-            printf("%s\t\t%s\n", table->items[i]->key, table->items[i]->value);
-        }
-    }
-    printf("-------------------\n\n");
+		printf("%s\t\t\t%s\n", symb[i].data,symb[i].key);
+	}
 }
 
-HashTable* st = create_table(SYMBOL);
-HashTable* ct = create_table(CONSTANT);
-
+void printconstant()
+{
+  printf("\n\n*****CONSTANT TABLE*****\n\n");
+	for(int i = 0 ; i < CAPACITY ; i++)
+	{
+		if(cons[i].length == 0)
+			continue;
+		printf("%s\t\t\t%s\n", cons[i].data,cons[i].key);
+	}
+}
 %}
 
 digit [0-9]
 letter [a-zA-Z_]
 KEY "while"|"if"|"else"|"for"|"int"|"float"|"return"|"auto"|"break"|"case"|"char"|"const"|"continue"|"default"|"do"|"double"|"enum"|"extern"|"goto"|"long"|"register"|"short"|"signed"|"sizeof"|"static"|"struct"|"switch"|"typedef"|"union"|"unsigned"|"void"|"volatile"
-OPER "<="|"=="|"="|"++"|"-"|"*"|"+"|"%"|"<"|">"|"=>"|"!="|"/"
+OPER "<="|"=="|"="|"++"|"-"|"*"|"+"|"%"|"<"|">"|"=>"|"!="|"/"|"&"
 IDEN {letter}({letter}|{digit})*
 INTE {digit}+
 
@@ -146,19 +157,17 @@ INTE {digit}+
 \/\* {del();}
 \/\/(.*) {};
 #(.*) {};
-{KEY} {printf("Keyword: %s\n",yytext);ht_insert(st, yytext, "Keyword");}
-
-{IDEN}/= {printf("Variable %s\n",yytext);}
-
-(\".*\")|(\'.*\') {printf("String: %s\n",yytext);}
-{INTE} {printf("Constant: %s\n",yytext);}
+{KEY} {printf("Keyword: %s\n",yytext);insertsymbol("KEYWORD\t",yytext);}
+\".*\" {printf("String Constant: %s\n",yytext);insertconstant("STRING CONSTANT",yytext);}
+\'.*\' {printf("Character Constant: %s\n",yytext);insertconstant("CHARACTER CONSTANT",yytext);}
+{INTE}+ {printf("Constant: %s\n",yytext);insertconstant("NUMBER CONSTANT",yytext);}
 [(){}|,;] {printf("Seperator: %s\n",yytext);}
-{IDEN} {printf("Identifier: %s\n",yytext);}
+{IDEN} {printf("Identifier: %s\n",yytext);insertsymbol("IDENTIFIER",yytext);}
 {OPER} {printf("Operator: %s\n",yytext);}
 (\")[^\n\"]* {del1();}
 (\')[^\n\']* {del1();}
 [ \t\n]+ {};
-. ;
+. {printf("%s\n",yytext);del2();}
 
 
 %%
@@ -183,8 +192,19 @@ int del2()
 
 int main()
 {
+  int i;
+  for(i-0;i<CAPACITY;i++)
+  {
+    symb[i].length=0;
+    cons[i].length=0;
+  }
   yyin=fopen("input.c","r");
   yylex();
-  print_table(st);
-  return 0;
+  printconstant();
+  printsymbol();
+}
+
+int yywrap()
+{
+  return 1;
 }
