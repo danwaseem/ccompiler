@@ -160,7 +160,7 @@ INTE {digit}+
 {KEY} {printf("Keyword: %s\n",yytext);insertsymbol("KEYWORD\t",yytext);}
 \".*\" {printf("String Constant: %s\n",yytext);insertconstant("STRING CONSTANT",yytext);}
 \'.*\' {printf("Character Constant: %s\n",yytext);insertconstant("CHARACTER CONSTANT",yytext);}
-{INTE}+ {printf("Constant: %s\n",yytext);insertconstant("NUMBER CONSTANT",yytext);}
+{INTE} {printf("Constant: %s\n",yytext);insertconstant("NUMBER CONSTANT",yytext);}
 [(){}|,;] {printf("Seperator: %s\n",yytext);}
 {IDEN} {printf("Identifier: %s\n",yytext);insertsymbol("IDENTIFIER",yytext);}
 {OPER} {printf("Operator: %s\n",yytext);}
@@ -198,7 +198,7 @@ int main()
     symb[i].length=0;
     cons[i].length=0;
   }
-  yyin=fopen("input.c","r");
+  yyin=fopen("test3.c","r");
   yylex();
   printconstant();
   printsymbol();
