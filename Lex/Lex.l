@@ -153,8 +153,8 @@ INTE {digit}+
 
 %%
 
-\/\*(.*\n)*.*\*\/ {} ;
-\/\* {del();}
+\/\*.*(\n)*\*\/ {} ;
+\/\*[^\*\/]* {del();}
 \/\/(.*) {};
 #(.*) {};
 {KEY} {printf("Keyword: %s\n",yytext);insertsymbol("KEYWORD\t",yytext);}
@@ -198,7 +198,7 @@ int main()
     symb[i].length=0;
     cons[i].length=0;
   }
-  yyin=fopen("test3.c","r");
+  yyin=fopen("test5.c","r");
   yylex();
   printconstant();
   printsymbol();
