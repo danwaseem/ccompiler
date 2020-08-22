@@ -147,7 +147,7 @@ void printconstant()
 digit [0-9]
 letter [a-zA-Z_]
 KEY "while"|"if"|"else"|"for"|"int"|"float"|"return"|"auto"|"break"|"case"|"char"|"const"|"continue"|"default"|"do"|"double"|"enum"|"extern"|"goto"|"long"|"register"|"short"|"signed"|"sizeof"|"static"|"struct"|"switch"|"typedef"|"union"|"unsigned"|"void"|"volatile"
-OPER "<="|"=="|"="|"++"|"-"|"*"|"+"|"%"|"<"|">"|"=>"|"!="|"/"|"&"
+OPER "<="|"=="|"="|"++"|"-"|"*"|"+"|"%"|"<"|">"|"=>"|"!="|"/"|"&"|"<<"|">>"|"~"|"|"|"^"
 IDEN {letter}({letter}|{digit})*
 INTE {digit}+
 
