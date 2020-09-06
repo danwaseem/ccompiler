@@ -200,7 +200,7 @@ int main()
     symb[i].length=0;
     cons[i].length=0;
   }
-  yyin=fopen("test7.c","r");
+  yyin=fopen("test6.c","r");
   yylex();
   printconstant();
   printsymbol();
