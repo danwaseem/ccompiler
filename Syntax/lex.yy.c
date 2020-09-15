@@ -758,18 +758,20 @@ void insertconstant(char *str1, char *str2)
 void printsymbol()
 {
   printf("\n\n*****SYMBOL TABLE*****\n\n");
+	printf("Class\t\t\tType\t\t\tName\t\t\tValue\t\t\tLineNo\n\n");
 	for(int i = 0 ; i < CAPACITY ; i++)
 	{
 		if(symb[i].length == 0)
 			continue;
 
-		printf("%s\t\t\t%s\t\t\t%s\t\t\t%s\t\t\t%d\n", symb[i].data,symb[i].class,symb[i].key,symb[i].value,symb[i].lineno);
+		printf("%s\t\t\t%s\t\t%s\t\t\t%s\t\t\t%d\n", symb[i].data,symb[i].class,symb[i].key,symb[i].value,symb[i].lineno);
 	}
 }
 
 void printconstant()
 {
   printf("\n\n*****CONSTANT TABLE*****\n\n");
+	printf("Type\t\t\tValue\n\n");
 	for(int i = 0 ; i < CAPACITY ; i++)
 	{
 		if(cons[i].length == 0)
@@ -783,8 +785,8 @@ char CVAL[20];
 
 
 
-#line 787 "lex.yy.c"
-#line 788 "lex.yy.c"
+#line 789 "lex.yy.c"
+#line 790 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -1001,10 +1003,10 @@ YY_DECL
 		}
 
 	{
-#line 199 "syntax.l"
+#line 201 "syntax.l"
 
 
-#line 1008 "lex.yy.c"
+#line 1010 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1064,459 +1066,459 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 201 "syntax.l"
+#line 203 "syntax.l"
 {yylineno++;}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 202 "syntax.l"
+#line 204 "syntax.l"
 {} ;
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 203 "syntax.l"
+#line 205 "syntax.l"
 {del();}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 204 "syntax.l"
+#line 206 "syntax.l"
 {};
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 205 "syntax.l"
+#line 207 "syntax.l"
 {};
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 206 "syntax.l"
-{return WHILE; strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 208 "syntax.l"
+{return WHILE; strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 207 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return IF;}
+#line 209 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return IF;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 208 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return ELSE;}
+#line 210 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return ELSE;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 209 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return FOR;}
+#line 211 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return FOR;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 210 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return INT;}
+#line 212 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return INT;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 211 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return FLOAT;}
+#line 213 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return FLOAT;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 212 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return RETURN;}
+#line 214 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return RETURN;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 213 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 215 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 214 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return BREAK;}
+#line 216 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return BREAK;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 215 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 217 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 216 "syntax.l"
-{strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return CHAR;}
+#line 218 "syntax.l"
+{strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return CHAR;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 217 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 219 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 218 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 220 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 219 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 221 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 220 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return DO;}
+#line 222 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return DO;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 221 "syntax.l"
-{strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return DOUBLE;}
+#line 223 "syntax.l"
+{strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return DOUBLE;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 222 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 224 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 223 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 225 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 224 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 226 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 225 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return LONG;}
+#line 227 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return LONG;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 226 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 228 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 227 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return SHORT;}
+#line 229 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return SHORT;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 228 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return SIGNED;}
+#line 230 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return SIGNED;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 229 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return SIZEOF;}
+#line 231 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return SIZEOF;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 230 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 232 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 231 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return STRUCT;}
+#line 233 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return STRUCT;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 232 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 234 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 233 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 235 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 234 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 236 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");return UNION;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 235 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return UNSIGNED;}
+#line 237 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return UNSIGNED;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 236 "syntax.l"
-{strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return VOID;}
+#line 238 "syntax.l"
+{strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return VOID;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 237 "syntax.l"
-{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+#line 239 "syntax.l"
+{ strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 238 "syntax.l"
+#line 240 "syntax.l"
 {return SEMICOLON;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 239 "syntax.l"
+#line 241 "syntax.l"
 {return COMMA;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 240 "syntax.l"
+#line 242 "syntax.l"
 {return OP;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 241 "syntax.l"
+#line 243 "syntax.l"
 {return CP;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 242 "syntax.l"
+#line 244 "syntax.l"
 {return OB;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 243 "syntax.l"
+#line 245 "syntax.l"
 {return CB;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 244 "syntax.l"
+#line 246 "syntax.l"
 {return COLON;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 245 "syntax.l"
+#line 247 "syntax.l"
 {return FULLSTOP;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 246 "syntax.l"
+#line 248 "syntax.l"
 {return OSB;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 247 "syntax.l"
+#line 249 "syntax.l"
 {return CSB;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 249 "syntax.l"
+#line 251 "syntax.l"
 {return SUBA;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 250 "syntax.l"
+#line 252 "syntax.l"
 {return LSHIFT;}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 251 "syntax.l"
+#line 253 "syntax.l"
 {return RSHIFT;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 252 "syntax.l"
+#line 254 "syntax.l"
 {return ANDA;}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 253 "syntax.l"
+#line 255 "syntax.l"
 {return XORA;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 254 "syntax.l"
+#line 256 "syntax.l"
 {return ORA;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 255 "syntax.l"
+#line 257 "syntax.l"
 {return SAND;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 256 "syntax.l"
+#line 258 "syntax.l"
 {return EXC;}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 257 "syntax.l"
+#line 259 "syntax.l"
 {return QUO;}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 258 "syntax.l"
+#line 260 "syntax.l"
 {return SUB;}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 259 "syntax.l"
+#line 261 "syntax.l"
 {return ADD;}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 260 "syntax.l"
+#line 262 "syntax.l"
 {return MUL;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 261 "syntax.l"
+#line 263 "syntax.l"
 {return DIV;}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 262 "syntax.l"
+#line 264 "syntax.l"
 {return MOD;}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 263 "syntax.l"
+#line 265 "syntax.l"
 {return PIPE;}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 264 "syntax.l"
+#line 266 "syntax.l"
 {return ASS;}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 265 "syntax.l"
+#line 267 "syntax.l"
 {return INCRI;}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 266 "syntax.l"
+#line 268 "syntax.l"
 {return DECRI;}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 267 "syntax.l"
+#line 269 "syntax.l"
 {return LEFTSHIFT;}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 268 "syntax.l"
+#line 270 "syntax.l"
 {return RIGHTSHIFT;}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 269 "syntax.l"
+#line 271 "syntax.l"
 {return LESSTHANA;}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 270 "syntax.l"
+#line 272 "syntax.l"
 {return LESSTHAN;}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 271 "syntax.l"
+#line 273 "syntax.l"
 {return GRETHANA;}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 272 "syntax.l"
+#line 274 "syntax.l"
 {return GRETHAN;}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 273 "syntax.l"
+#line 275 "syntax.l"
 {return EQ;}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 274 "syntax.l"
+#line 276 "syntax.l"
 {return NEQ;}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 275 "syntax.l"
+#line 277 "syntax.l"
 {return AND;}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 276 "syntax.l"
+#line 278 "syntax.l"
 {return OR;}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 277 "syntax.l"
+#line 279 "syntax.l"
 {return UP;}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 278 "syntax.l"
+#line 280 "syntax.l"
 {return MULA;}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 279 "syntax.l"
+#line 281 "syntax.l"
 {return DIVA;}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 280 "syntax.l"
+#line 282 "syntax.l"
 {return MODA;}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 281 "syntax.l"
+#line 283 "syntax.l"
 {return ADDA;}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 283 "syntax.l"
+#line 285 "syntax.l"
 {strcpy(CVAL,yytext); insertconstant(yytext,"String Constant"); return STRING;}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 284 "syntax.l"
+#line 286 "syntax.l"
 {strcpy(CVAL,yytext); insertconstant(yytext,"Character Constant"); return CHARACTER;}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 285 "syntax.l"
+#line 287 "syntax.l"
 {strcpy(CVAL,yytext); insertconstant(yytext, "Number Constant"); return INTEGER;}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 286 "syntax.l"
+#line 288 "syntax.l"
 {strcpy(CVAL,yytext); insertconstant(yytext, "Floating Constant"); return FLOATC;}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 287 "syntax.l"
+#line 289 "syntax.l"
 {strcpy(CID,yytext);insertsymbol(yytext,"Identifier");  return IDEN;}
 	YY_BREAK
 case 86:
 /* rule 86 can match eol */
 YY_RULE_SETUP
-#line 288 "syntax.l"
+#line 290 "syntax.l"
 {del1();}
 	YY_BREAK
 case 87:
 /* rule 87 can match eol */
 YY_RULE_SETUP
-#line 289 "syntax.l"
+#line 291 "syntax.l"
 {del1();}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 290 "syntax.l"
+#line 292 "syntax.l"
 {};
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 291 "syntax.l"
+#line 293 "syntax.l"
 {printf("%s\n",yytext);del2();}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 294 "syntax.l"
+#line 296 "syntax.l"
 ECHO;
 	YY_BREAK
-#line 1520 "lex.yy.c"
+#line 1522 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2521,7 +2523,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 294 "syntax.l"
+#line 296 "syntax.l"
 
 
 int del()

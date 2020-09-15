@@ -290,10 +290,8 @@ int main()
 
 	if(flag == 0)
 	{
-		printf("\n\n\n*****SYMBOL TABLE*****\n\n\n");
 		printsymbol();
 
-		printf("\n\n\n*****CONSTANT TABLE*****\n\n\n");
 		printconstant();
 	}
 }

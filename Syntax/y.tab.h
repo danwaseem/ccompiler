@@ -59,64 +59,66 @@ extern int yydebug;
     SIGNED = 265,
     UNSIGNED = 266,
     STRUCT = 267,
-    RETURN = 268,
-    MAIN = 269,
-    VOID = 270,
-    WHILE = 271,
-    FOR = 272,
-    DO = 273,
-    BREAK = 274,
-    ENDIF = 275,
-    IDEN = 276,
-    INTEGER = 277,
-    STRING = 278,
-    FLOATC = 279,
-    CHARACTER = 280,
-    SEMICOLON = 281,
-    COMMA = 282,
-    OP = 283,
-    CP = 284,
-    OB = 285,
-    CB = 286,
-    OSB = 287,
-    CSB = 288,
-    COLON = 289,
-    FULLSTOP = 290,
-    ELSE = 291,
-    LSHIFT = 292,
-    RSHIFT = 293,
-    XORA = 294,
-    ORA = 295,
-    ANDA = 296,
-    MODA = 297,
-    MULA = 298,
-    DIVA = 299,
-    ADDA = 300,
-    SUBA = 301,
-    ASS = 302,
-    OR = 303,
-    AND = 304,
-    PIPE = 305,
-    UP = 306,
-    SAND = 307,
-    EQ = 308,
-    NEQ = 309,
-    LESSTHANA = 310,
-    LESSTHAN = 311,
-    GRETHANA = 312,
-    GRETHAN = 313,
-    LEFTSHIFT = 314,
-    RIGHTSHIFT = 315,
-    ADD = 316,
-    SUB = 317,
-    MUL = 318,
-    DIV = 319,
-    MOD = 320,
-    SIZEOF = 321,
-    QUO = 322,
-    EXC = 323,
-    INCRI = 324,
-    DECRI = 325
+    UNION = 268,
+    RETURN = 269,
+    MAIN = 270,
+    VOID = 271,
+    WHILE = 272,
+    FOR = 273,
+    DO = 274,
+    BREAK = 275,
+    CONTINUE = 276,
+    ENDIF = 277,
+    IDEN = 278,
+    INTEGER = 279,
+    STRING = 280,
+    FLOATC = 281,
+    CHARACTER = 282,
+    SEMICOLON = 283,
+    COMMA = 284,
+    OP = 285,
+    CP = 286,
+    OB = 287,
+    CB = 288,
+    OSB = 289,
+    CSB = 290,
+    COLON = 291,
+    FULLSTOP = 292,
+    ELSE = 293,
+    LSHIFT = 294,
+    RSHIFT = 295,
+    XORA = 296,
+    ORA = 297,
+    ANDA = 298,
+    MODA = 299,
+    MULA = 300,
+    DIVA = 301,
+    ADDA = 302,
+    SUBA = 303,
+    ASS = 304,
+    OR = 305,
+    AND = 306,
+    PIPE = 307,
+    UP = 308,
+    SAND = 309,
+    EQ = 310,
+    NEQ = 311,
+    LESSTHANA = 312,
+    LESSTHAN = 313,
+    GRETHANA = 314,
+    GRETHAN = 315,
+    LEFTSHIFT = 316,
+    RIGHTSHIFT = 317,
+    ADD = 318,
+    SUB = 319,
+    MUL = 320,
+    DIV = 321,
+    MOD = 322,
+    SIZEOF = 323,
+    QUO = 324,
+    EXC = 325,
+    INCRI = 326,
+    DECRI = 327
   };
 #endif
 /* Tokens.  */
@@ -130,64 +132,66 @@ extern int yydebug;
 #define SIGNED 265
 #define UNSIGNED 266
 #define STRUCT 267
-#define RETURN 268
-#define MAIN 269
-#define VOID 270
-#define WHILE 271
-#define FOR 272
-#define DO 273
-#define BREAK 274
-#define ENDIF 275
-#define IDEN 276
-#define INTEGER 277
-#define STRING 278
-#define FLOATC 279
-#define CHARACTER 280
-#define SEMICOLON 281
-#define COMMA 282
-#define OP 283
-#define CP 284
-#define OB 285
-#define CB 286
-#define OSB 287
-#define CSB 288
-#define COLON 289
-#define FULLSTOP 290
-#define ELSE 291
-#define LSHIFT 292
-#define RSHIFT 293
-#define XORA 294
-#define ORA 295
-#define ANDA 296
-#define MODA 297
-#define MULA 298
-#define DIVA 299
-#define ADDA 300
-#define SUBA 301
-#define ASS 302
-#define OR 303
-#define AND 304
-#define PIPE 305
-#define UP 306
-#define SAND 307
-#define EQ 308
-#define NEQ 309
-#define LESSTHANA 310
-#define LESSTHAN 311
-#define GRETHANA 312
-#define GRETHAN 313
-#define LEFTSHIFT 314
-#define RIGHTSHIFT 315
-#define ADD 316
-#define SUB 317
-#define MUL 318
-#define DIV 319
-#define MOD 320
-#define SIZEOF 321
-#define QUO 322
-#define EXC 323
-#define INCRI 324
-#define DECRI 325
+#define UNION 268
+#define RETURN 269
+#define MAIN 270
+#define VOID 271
+#define WHILE 272
+#define FOR 273
+#define DO 274
+#define BREAK 275
+#define CONTINUE 276
+#define ENDIF 277
+#define IDEN 278
+#define INTEGER 279
+#define STRING 280
+#define FLOATC 281
+#define CHARACTER 282
+#define SEMICOLON 283
+#define COMMA 284
+#define OP 285
+#define CP 286
+#define OB 287
+#define CB 288
+#define OSB 289
+#define CSB 290
+#define COLON 291
+#define FULLSTOP 292
+#define ELSE 293
+#define LSHIFT 294
+#define RSHIFT 295
+#define XORA 296
+#define ORA 297
+#define ANDA 298
+#define MODA 299
+#define MULA 300
+#define DIVA 301
+#define ADDA 302
+#define SUBA 303
+#define ASS 304
+#define OR 305
+#define AND 306
+#define PIPE 307
+#define UP 308
+#define SAND 309
+#define EQ 310
+#define NEQ 311
+#define LESSTHANA 312
+#define LESSTHAN 313
+#define GRETHANA 314
+#define GRETHAN 315
+#define LEFTSHIFT 316
+#define RIGHTSHIFT 317
+#define ADD 318
+#define SUB 319
+#define MUL 320
+#define DIV 321
+#define MOD 322
+#define SIZEOF 323
+#define QUO 324
+#define EXC 325
+#define INCRI 326
+#define DECRI 327
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

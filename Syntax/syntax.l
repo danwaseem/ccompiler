@@ -164,18 +164,20 @@ void insertconstant(char *str1, char *str2)
 void printsymbol()
 {
   printf("\n\n*****SYMBOL TABLE*****\n\n");
+	printf("Class\t\t\tType\t\t\tName\t\t\tValue\t\t\tLineNo\n\n");
 	for(int i = 0 ; i < CAPACITY ; i++)
 	{
 		if(symb[i].length == 0)
 			continue;
 
-		printf("%s\t\t\t%s\t\t\t%s\t\t\t%s\t\t\t%d\n", symb[i].data,symb[i].class,symb[i].key,symb[i].value,symb[i].lineno);
+		printf("%s\t\t\t%s\t\t%s\t\t\t%s\t\t\t%d\n", symb[i].data,symb[i].class,symb[i].key,symb[i].value,symb[i].lineno);
 	}
 }
 
 void printconstant()
 {
   printf("\n\n*****CONSTANT TABLE*****\n\n");
+	printf("Type\t\t\t\tValue\n\n");
 	for(int i = 0 ; i < CAPACITY ; i++)
 	{
 		if(cons[i].length == 0)
@@ -203,38 +205,38 @@ INTE {digit}+
 \/\*[^(\*\/)] {del();}
 \/\/(.*) {};
 #(.*) {};
-"while" {return WHILE; strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"if" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return IF;}
-"else" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return ELSE;}
-"for" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return FOR;}
-"int" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return INT;}
-"float" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return FLOAT;}
-"return" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return RETURN;}
-"auto" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"break" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return BREAK;}
-"case" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"char" {strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return CHAR;}
-"const" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"continue" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"default" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"do" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return DO;}
-"double" {strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return DOUBLE;}
-"enum" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"extern" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"goto" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"long" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return LONG;}
-"register" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"short" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return SHORT;}
-"signed" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return SIGNED;}
-"sizeof" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return SIZEOF;}
-"static" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"struct" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return STRUCT;}
-"switch" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"typedef" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"union" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");return UNION;}
-"unsigned" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return UNSIGNED;}
-"void" {strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return VOID;}
-"volatile" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+"while" {return WHILE; strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"if" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return IF;}
+"else" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return ELSE;}
+"for" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return FOR;}
+"int" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return INT;}
+"float" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return FLOAT;}
+"return" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return RETURN;}
+"auto" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"break" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return BREAK;}
+"case" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"char" {strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return CHAR;}
+"const" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"continue" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"default" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"do" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return DO;}
+"double" {strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return DOUBLE;}
+"enum" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"extern" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"goto" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"long" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return LONG;}
+"register" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"short" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return SHORT;}
+"signed" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return SIGNED;}
+"sizeof" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return SIZEOF;}
+"static" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"struct" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return STRUCT;}
+"switch" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"typedef" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
+"union" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");return UNION;}
+"unsigned" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return UNSIGNED;}
+"void" {strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t"); return VOID;}
+"volatile" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword\t");}
 ";" {return SEMICOLON;}
 "," {return COMMA;}
 "(" {return OP;}
