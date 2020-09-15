@@ -6,7 +6,6 @@
 	#include<malloc.h>
 
 	#define CAPACITY 1000
-
 struct symbol
 {
 	char key[100];

@@ -1938,7 +1938,7 @@ void printconstant();
 
 int main()
 {
-	yyin = fopen("test1.c", "r");
+	yyin = fopen("test5.c", "r");
 	yyparse();
 
 	if(flag == 0)
@@ -1951,7 +1951,7 @@ int main()
 
 void yyerror(char *s)
 {
-	printf("%d %s %s\n", yylineno, s, yytext);
+	printf("On Line Number %d %s %s\n", yylineno, s, yytext);
 	flag=1;
 	printf("Parsing Failed\n");
 }
