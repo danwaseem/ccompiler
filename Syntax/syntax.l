@@ -231,7 +231,7 @@ INTE {digit}+
 "struct" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return STRUCT;}
 "switch" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
 "typedef" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
-"union" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
+"union" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");return UNION;}
 "unsigned" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return UNSIGNED;}
 "void" {strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword"); return VOID;}
 "volatile" { strcpy(CTYPE,yytext); insertsymbol(yytext, "Keyword");}
