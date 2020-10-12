@@ -285,7 +285,7 @@ void printconstant();
 
 int main()
 {
-	yyin = fopen("test5.c", "r");
+	yyin = fopen("test2.c", "r");
 	yyparse();
 
 	if(flag == 0)
