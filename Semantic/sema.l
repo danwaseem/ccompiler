@@ -303,7 +303,7 @@ int checkarray(char *s)
 	{
 		if(strcmp(symb[i].key,s)==0)
 		{
-			if(strcmp(ST[i].class,"Array Identifier")==0)
+			if(strcmp(symb[i].class,"Array Identifier")==0)
 			{
 				return 0;
 			}
@@ -498,11 +498,12 @@ INTE {digit}+
 "+="			 {return ADDA;}
 
 \".*\" {strcpy(CVAL,yytext); insertconstant(yytext,"String Constant"); return STRING;}
+[a-z|A-Z]([a-z|A-Z]|[0-9])*/\[ {strcpy(CID,yytext); insertsymbol(yytext, "Array Identifier"); return ARRAYIDEN;}
 \'.*\' {strcpy(CVAL,yytext); insertconstant(yytext,"Character Constant"); return CHARACTER;}
 {digit}+ {strcpy(CVAL,yytext); insertconstant(yytext, "Number Constant"); return INTEGER;}
 {digit}+"."{digit}+  {strcpy(CVAL,yytext); insertconstant(yytext, "Floating Constant"); return FLOATC;}
 {IDEN} {strcpy(CID,yytext);insertsymbol(yytext,"Identifier");  return IDEN;}
-{IDEN}/​\[ {​strcpy​(CID,yytext); ​insertsymbol​(yytext, ​"Array Identifier"​);  ​return​ ARRAYIDEN;}
+
 (\")[^\"]* {del1();}
 (\')[^\']* {del1();}
 [ \t]+ {};

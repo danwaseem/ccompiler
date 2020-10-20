@@ -94,8 +94,6 @@ VDECLARE	: TYPE VDECLAREL SEMICOLON ;
 VDECLAREL	: VDECLAREL COMMA VDECLAREI
 					|	VDECLAREI;
 
-V		: COMMA VDECLAREL
-		| ;
 
 
 
@@ -190,12 +188,12 @@ ARRINTD	: INTEGER ARRINTDB;
 ARRINTDB	: COMMA ARRINTD
 					| ;
 
-EXPR	: MUTABLE ASS EXPR {if($1==1 && $3==1)   $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
-			| MUTABLE ADDA EXPR {if($1==1 && $3==1)   $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
-			| MUTABLE SUBA EXPR {if($1==1 && $3==1)   $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
-			| MUTABLE MULA EXPR {if($1==1 && $3==1)   $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
-			| MUTABLE DIVA EXPR {if($1==1 && $3==1)   $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
-			| MUTABLE MODA EXPR {if($1==1 && $3==1)   $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
+EXPR	: MUTABLE ASS EXPR {if($1==1 && $3==1)  { $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
+			| MUTABLE ADDA EXPR {if($1==1 && $3==1)  { $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
+			| MUTABLE SUBA EXPR {if($1==1 && $3==1)   { $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
+			| MUTABLE MULA EXPR {if($1==1 && $3==1)  { $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
+			| MUTABLE DIVA EXPR {if($1==1 && $3==1)  { $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
+			| MUTABLE MODA EXPR {if($1==1 && $3==1)  { $$=1; } else  {$$=-1; printf("Type mismatch\n"); exit(0);} }
 			|	MUTABLE INCRI {if($1 == 1) $$=1; else $$=-1;}
 			| MUTABLE DECRI {if($1 == 1) $$=1; else $$=-1;}
 			| SEXPR {if($1 == 1) $$=1; else $$=-1;} ;
@@ -299,7 +297,7 @@ void printconstant();
 
 int main()
 {
-	yyin = fopen("test2.c", "r");
+	yyin = fopen("test1.c", "r");
 	yyparse();
 
 	if(flag == 0)
