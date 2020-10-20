@@ -96,7 +96,7 @@ void insertSymbolvalue(char *str1, char *str2)
 
 void insertSTnest(char *s, int nest)
 {
-	if(searchST(s) && symb[searchST(s)].nestval != 9999)
+	if(searchST(s) && symb[searchST(s)].nestval != 99999)
 	{
 		int pos = 0;
 		int value = hash(s);
@@ -196,7 +196,7 @@ void insertsymbol(char *str1, char *str2)
 			strcpy(symb[value].key,str1);
 			strcpy(symb[value].class,str2);
 			symb[value].length = strlen(str1);
-			symb[value].nestval = 9999;
+			symb[value].nestval = 99999;
 			symb[value].params_count = -1;
 			insertSymbolline(str1,yylineno);
 			return;
@@ -214,7 +214,7 @@ void insertsymbol(char *str1, char *str2)
 		strcpy(symb[pos].key,str1);
 		strcpy(symb[pos].class,str2);
 		symb[pos].length = strlen(str1);
-		symb[pos].nestval = 9999;
+		symb[pos].nestval = 99999;
 		symb[pos].params_count = -1;
 	}
 }
@@ -383,7 +383,7 @@ void printsymbol()
 		if(symb[i].length == 0)
 			continue;
 
-		printf("%s\t\t\t%s\t\t%s\t\t\t%s\t\t\t%d\n", symb[i].data,symb[i].class,symb[i].key,symb[i].value,symb[i].lineno,	symb[i].nestval, symb[i].params_count);
+		printf("%s\t\t\t%s\t\t%s\t\t\t%s\t\t\t%d\t\t\t%d\t\t\t%d\n", symb[i].data,symb[i].class,symb[i].key,symb[i].value,symb[i].lineno,	symb[i].nestval, symb[i].params_count);
 	}
 }
 
