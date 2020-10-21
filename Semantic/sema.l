@@ -377,13 +377,13 @@ char gettype(char *s, int flag)
 void printsymbol()
 {
   printf("\n\n*****SYMBOL TABLE*****\n\n");
-	printf("Class\t\t\tType\t\t\tName\t\t\tValue\t\t\tLineNo\t\t\tNesting\t\t\tParams Count\n\n");
+	printf("Class\t\t\tType\t\t\tName\t\t\tValue\t\t\tLineNo\t\t\tNesting\n\n");
 	for(int i = 0 ; i < CAPACITY ; i++)
 	{
 		if(symb[i].length == 0)
 			continue;
 
-		printf("%-24s%-24s%-24s%-24s%-24d%-24d%-24d\n", symb[i].data,symb[i].class,symb[i].key,symb[i].value,symb[i].lineno,	symb[i].nestval, symb[i].params_count);
+		printf("%-24s%-24s%-24s%-24s%-24d%-24d%-24d\n", symb[i].data,symb[i].class,symb[i].key,symb[i].value,symb[i].lineno,	symb[i].nestval );
 	}
 }
 
