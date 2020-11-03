@@ -2716,7 +2716,7 @@ void callgen()
 
 int main()
 {
-	yyin = fopen("test10.c", "r");
+	yyin = fopen("test12.c", "r");
 	yyparse();
 
 	if(flag == 0)
