@@ -187,9 +187,9 @@ CONDST	: IF OP SEXPR CP {label1(); if($3!=1){printf("Condition checking is not o
 CONDSTBR	: ELSE STATEMENT {label3();}
 					| {label3();} ;
 
-ITER	: WHILE OP  {label4();} SEXPR CP {label1(); if($3!=1){printf("Condition checking is not of type int\n");exit(0);}} STATEMENT {label5();}
-			| FOR OP EXPR SEMICOLON {label4();} SEXPR SEMICOLON {label1(); if($5!=1){printf("Condition checking is not of type int\n");exit(0);}} EXPR CP STATEMENT {label5();}
-			| {label4();} DO STATEMENT WHILE OP SEXPR CP {label1();label5(); if($5!=1){printf("Condition checking is not of type int\n");exit(0);}} SEMICOLON;
+ITER	: WHILE OP  {label4();} SEXPR CP {label1(); if($4!=1){printf("Condition checking is not of type int\n");exit(0);}} STATEMENT {label5();}
+			| FOR OP EXPR SEMICOLON {label4();} SEXPR SEMICOLON {label1(); if($6!=1){printf("Condition checking is not of type int\n");exit(0);}} EXPR CP STATEMENT {label5();}
+			| {label4();} DO STATEMENT WHILE OP SEXPR CP {label1();label5(); if($6!=1){printf("Condition checking is not of type int\n");exit(0);}} SEMICOLON;
 
 RETURNS	:	RETURN SEMICOLON {if(strcmp(currfunctype,"void")) {printf("Returning void of a non-void function\n"); exit(0);}}
 				| RETURN EXPR SEMICOLON {if(!strcmp(currfunctype, "void")){yyerror("Function is void\n");} if((currfunctype[0]=='i' || currfunctype[0]=='c') && $2!=1)	{	printf("Expression doesn't match return type of function\n"); exit(0); } };
@@ -277,7 +277,7 @@ IMMUTABLE	: OP EXPR CP {if($2==1) $$=1; else $$=-1;}
 					| CALL {if($1==-1) $$=-1; else $$=1;}
 					| constant {if($1==1) $$=1; else $$=-1;};
 
-CALL	: IDEN OP {if(!check_declaration(CID, "Function")) { printf("Function not declared\n"); exit(0);} insertSTF(CID); strcpy(currfunccall,CID); } if(gettype(CID,0)=='i' || gettype(CID,1)== 'c') { $$ = 1; } else $$ = -1; call_params_count=0;}
+CALL	: IDEN OP {if(!check_declaration(CID, "Function")) { printf("Function not declared\n"); exit(0);} insertSTF(CID); strcpy(currfunccall,CID);  if(gettype(CID,0)=='i' || gettype(CID,1)== 'c') { $$ = 1; } else $$ = -1; call_params_count=0;}
 				ARGUMENTS CP { if(strcmp(currfunccall,"printf")){if(getSTparamscount(currfunccall)!=call_params_count){yyerror("Number of arguments in function call doesn't match number of parameters\n");
 							exit(8);}	} callgen(); };
 
@@ -552,7 +552,7 @@ void callgen()
 
 int main()
 {
-	yyin = fopen("test1.c", "r");
+	yyin = fopen("test10.c", "r");
 	yyparse();
 
 	if(flag == 0)

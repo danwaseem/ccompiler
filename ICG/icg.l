@@ -382,7 +382,7 @@ void printsymbol()
 		if(symb[i].length == 0)
 			continue;
 
-		printf("%-24s%-24s%-24s%-24s%-24d%-24d%-24d\n", symb[i].data,symb[i].class,symb[i].key,symb[i].value,symb[i].lineno,	symb[i].nestval, ST[i].params_count );
+		printf("%-24s%-24s%-24s%-24s%-24d%-24d%-24d\n", symb[i].data,symb[i].class,symb[i].key,symb[i].value,symb[i].lineno,	symb[i].nestval, symb[i].params_count );
 	}
 }
 
